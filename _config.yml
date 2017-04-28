@@ -3,7 +3,7 @@ name: Gavin Staniforth
 bio: Passionate software engineer working with large scale applications with an interest in performance, scalability & devops
 
 # twitter summary info
-description: A blog about technology and stuff related
+description: Things about Gavin Staniforth.. and opinions
 
 # if it's an external image, update below for true
 # better with square images
@@ -17,7 +17,6 @@ resume-external: true
 resume-url: https://google.com/?q=my+resume
 
 url: https://www.gsdev.me/
-# your url: http://USERNAME.github.io
 
 permalink: /:title/
 
@@ -31,7 +30,8 @@ permalink: /:title/
 # if you don't want comments in your posts, leave categories empty
 disqus:
   shortname: mydisqus # enter this from your disqus account
-  categories: [blog, project] # only show disqus for posts that have these categories
+  #categories: [blog] # only show disqus for posts that have these categories
+  categories: [] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
 #facebook: myfacebook
@@ -52,12 +52,12 @@ github: gsdevme
 #email: myemail@gmail.com
 
 authors:
-    johndoe:
-        name: John Doe
-        bio: A Man who travels the world eating noodles
+    me:
+        name: Gavin Staniforth
+        bio: Passionate software & devops engineer
         external-image: false
         picture: assets/images/profile.jpg
-        twitter: johndoe
+        twitter: gsdev90
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
@@ -72,7 +72,7 @@ width: normal
 projects: false
 
 # if you don't need "about" or "blog", comment them out below
-about: false
+about: true
 blog: false
 
 # do you want to show the "read time" of the posts?
