@@ -93,7 +93,7 @@ show-author: false
 # do you want some animations?
 animation: false
 
-gems:
+plugins:
   - jekyll-seo-tag
   - jekyll-gist
   #- jekyll-feed
