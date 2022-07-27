@@ -73,6 +73,8 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    nokogiri (1.13.8-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     parallel (1.22.1)
@@ -105,6 +107,8 @@ GEM
     yell (2.2.2)
 
 PLATFORMS
+  x86_64-darwin-19
+  x86_64-linux
   x86_64-linux-musl
 
 DEPENDENCIES
@@ -119,4 +123,4 @@ DEPENDENCIES
   webrick (~> 1.7)
 
 BUNDLED WITH
-   2.3.18
+   2.3.11
