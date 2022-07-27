@@ -1,103 +1,183 @@
-# main text of home
-name: Gavin Staniforth
-bio: Passionate software engineer working with large scale applications with an interest in performance, scalability & devops
+theme: jekyll-theme-chirpy
+baseurl: ''
 
-# twitter summary info
-description: Things about Gavin Staniforth.. and opinions
+lang: en
 
-# if it's an external image, update below for true
-# better with square images
-external-image: false
-picture: assets/images/profile.jpg
+# Additional parameters for datetime localization, optional. › https://github.com/iamkun/dayjs/tree/dev/src/locale
+prefer_datetime_locale:
 
-# If you want to include your resume, set to true
-# and specify source (external or local).
-resume: false
-resume-external: true
-resume-url: https://google.com/?q=my+resume
+timezone: Europe/London
 
-url: https://www.gsdev.me/
+# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+# ↓ --------------------------
 
-permalink: /:title/
+title: Gavin Staniforth                          # the main title
+tagline: Ramblings from a Software Engineer   # it will display as the sub-title
+description: >-                        # used by seo meta and the atom feed
+  software engineer with an interest in renewable technologies, DIY and Alaskan Malamutes
 
-# To enable google analytics, supply your token below
-# analytics-google: 'UA-MYANALYTICS'
+url: 'https://gsdev.me'
 
-# To enable piwik tracking, supply your url & site ID below
-# analytics-piwik-url: 'piwik.my-host.com'
-# analytics-piwik-id: 1
+github:
+  username: gsdevme
+twitter:
+  username: gsdev90
 
-# if you don't want comments in your posts, leave categories empty
-disqus:
-  shortname: mydisqus # enter this from your disqus account
-  #categories: [blog] # only show disqus for posts that have these categories
-  categories: [] # only show disqus for posts that have these categories
+social:
+  name: Gavin Staniforth
+  email: no-spam@example.com             # change to your email address
+  links:
+    # The first element serves as the copyright owner's link
+    - https://github.com/gsdevme       # change to your github homepage
+    - https://twitter.com/gsdev90      # change to your twitter homepage
+    - https://www.linkedin.com/in/gavin-s-93546538
 
-# if you don't have any of social below, comment the line
-#facebook: myfacebook
-#twitter: mytwitter
-# google: mygoogle
-# instagram: myinstagram
-# pinterest: mypinterest
-# linkedin: mylinkedin
-# youtube: myyoutube
-# spotify: myspotify
-github: gsdevme
-# lastfm: mylastfm
-# stackoverflow: 7044681/mystackoverflow
-# quora: userquora
-# reddit: username
-#medium: medium
-# vimeo: myvimeo
-#email: myemail@gmail.com
+google_site_verification:               # fill in to your verification string
 
-authors:
-    me:
-        name: Gavin Staniforth
-        bio: Passionate software & devops engineer
-        external-image: false
-        picture: assets/images/profile.jpg
-        twitter: gsdev90
+# ↑ --------------------------
+# The end of `jekyll-seo-tag` settings
 
-# do you want a larger site? change the option below
-# options: [normal, large] | default: normal
-# normal = 560px / large = 810px
-width: normal
+google_analytics:
+  id:                 # fill in your Google Analytics ID
+  # Google Analytics pageviews report settings
+  pv:
+    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
+    cache_path:       # the local PV cache data, friendly to visitors from GFW region
 
-# if you don't need pagination, comment the *paginate* configs below
-# paginate: 5
-# paginate_path: "blog/:num/"
+# Prefer color scheme setting.
+#
+# Note: Keep empty will follow the system prefer color by default,
+# and there will be a toggle to switch the theme between dark and light
+# on the bottom left of the sidebar.
+#
+# Available options:
+#
+#     light  - Use the light color scheme
+#     dark   - Use the dark color scheme
+#
+theme_mode:   # [light|dark]
 
-# if you don't need projects, comment the *projects* configs below
-projects: false
+# The CDN endpoint for images.
+# Notice that once it is assigned, the CDN url
+# will be added to all image (site avatar & posts' images) paths starting with '/'
+#
+# e.g. 'https://cdn.com'
+img_cdn:
 
-# if you don't need "about" or "blog", comment them out below
-about: true
-blog: false
+# the avatar on sidebar, support local or CORS resources
+avatar: /assets/avatar.jpeg
 
-# do you want to show the "read time" of the posts?
-read-time: false
+# boolean type, the global switch for ToC in posts.
+toc: true
 
-# do you want to show the "tags" inside the posts?
-show-tags: false
+comments:
+  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  # The active options are as follows:
+  disqus:
+    shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  # utterances settings › https://utteranc.es/
+  utterances:
+    repo:         # <gh-username>/<repo>
+    issue_term:   # < url | pathname | title | ...>
+  # Giscus options › https://giscus.app
+  giscus:
+    repo:             # <gh-username>/<repo>
+    repo_id:
+    category:
+    category_id:
+    mapping:          # optional, default to 'pathname'
+    input_position:   # optional, default to 'bottom'
+    lang:             # optional, default to the value of `site.lang`
 
-# related posts inside a post?
-related: false
+# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
+assets:
+  self_host:
+    enabled:      # boolean, keep empty means false
+    # specify the Jekyll environment, empty means both
+    # only works if `assets.self_host.enabled` is 'true'
+    env: production
 
-# Display links for next and previous posts for the specified categories
-post-advance-links: [blog]
+pwa:
+  enabled: true   # the option for PWA feature
 
-# show author block at the end of a post ?
-show-author: false
+paginate: 10
 
-# do you want some animations?
-animation: false
+# ------------ The following options are not recommended to be modified ------------------
 
-plugins:
-  - jekyll-seo-tag
-  - jekyll-gist
-  #- jekyll-feed
-  - jemoji
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:   # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: highlight
+    # default_lang: console
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
-jekyll-mentions:
-    base_url: https://github.com
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: ''          # An empty string here means all files in the project
+      type: posts
+    values:
+      layout: post
+      comments: true    # Enable comments in posts.
+      toc: true         # Display TOC column in posts.
+      # DO NOT modify the following parameter unless you are confident enough
+      # to update the code of all other post links in this project.
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ''
+      type: tabs             # see `site.collections`
+    values:
+      layout: page
+      permalink: /:title/
+  - scope:
+      path: assets/img/favicons
+    values:
+      swcache: true
+  - scope:
+      path: assets/js/dist
+    values:
+      swcache: true
+
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - '*.gem'
+  - '*.gemspec'
+  - tools
+  - README.md
+  - CHANGELOG.md
+  - LICENSE
+  - gulpfile.js
+  - node_modules
+  - package*.json
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
