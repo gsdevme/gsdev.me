@@ -41,7 +41,7 @@ despite the earth being adjacent, it's not been terminated into the box or fitti
 
 Roughly speaking the things high on my list to sort;
 
-- Have the Consumer unit changed
+- The Consumer unit changed
 - Rewire the upstairs lighting
 - Insulate the suspended floors
 - Insulate the loft

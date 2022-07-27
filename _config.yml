@@ -1,9 +1,11 @@
-theme: jekyll-theme-chirpy
+#theme: jekyll-theme-chirpy
 remote_theme: cotes2020/jekyll-theme-chirpy
 baseurl: ''
 
 plugins:
   - jekyll-remote-theme
+  - jekyll-paginate
+  - jekyll-archives
 
 lang: en
 

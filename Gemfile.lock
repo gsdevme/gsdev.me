@@ -109,6 +109,8 @@ PLATFORMS
 
 DEPENDENCIES
   html-proofer (~> 3.18)
+  jekyll-archives
+  jekyll-paginate
   jekyll-remote-theme
   jekyll-theme-chirpy (~> 5.2, >= 5.2.1)
   tzinfo (~> 1.2)
