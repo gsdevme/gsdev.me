@@ -7,7 +7,6 @@ tags: [diy, house, renovation]     # TAG names should always be lowercase
 
 # Intro
 
-Intro
 Today marks the day I moved from a new build property into a 1979 house in sunny Ayrshire. The four-bed property has been fairly well looked after however, decoration hasn’t kept up with modern trends.
 
 Summary of my understanding of the house;

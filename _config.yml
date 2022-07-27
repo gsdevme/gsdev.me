@@ -1,5 +1,9 @@
 theme: jekyll-theme-chirpy
+remote_theme: cotes2020/jekyll-theme-chirpy
 baseurl: ''
+
+plugins:
+  - jekyll-remote-theme
 
 lang: en
 
