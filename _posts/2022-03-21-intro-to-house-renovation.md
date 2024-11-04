@@ -7,33 +7,28 @@ tags: [diy, house, renovation]     # TAG names should always be lowercase
 
 # Intro
 
-Today marks the day I moved from a new build property into a 1979 house in sunny Ayrshire. The four-bed property has been fairly well looked after however, decoration hasn’t kept up with modern trends.
+Today marks the day I moved from a new-build property into a 1979 house in sunny Ayrshire. This four-bedroom property has been maintained but is due for an update to reflect modern decor trends and improved thermal properties.
 
-Summary of my understanding of the house;
+Here’s a quick overview of what I know about the house so far:
 
-- One Previous owner
-- The garage had an extension built on top between 1990-2000
-- The loft has partial 100mm insulation
-- The suspended floor has no insulation
-- The property is built with double brick walls and cavity wall insulation added in 1997
-- The consumer unit (fuse board) is from the 1990s
-- It has a system boiler with a vented cylinder in the loft
-- It faces 220° south-west
-- uPVC throughout although likely from the date of the extension (old)
-- Wooden backdoor
+- One previous owner
+- Garage extension added between 1990-2000
+- Loft insulation is partial, with only 100mm currently installed
+- Suspended floors are uninsulated
+- Double brick walls with cavity wall insulation added in 1997
+- Consumer unit (fuse board) dates to the 1990s
+- System boiler with a vented cylinder located in the loft
+- Orientation: South-west facing, approximately 220°
+- Windows: All uPVC, likely from the extension era and showing their age
+- Back door: Wooden
 
+## Electrical Overview
 
-## Electrics
-
-Given the house is 42 years old it's possible that over time some of the electrical work carried out isn't up to current standards.
-The consumer unit is a non-RCD board and plastic therefore not complaint with 18th edition standards. Visually it looks to be
-original wiring all at the board, so any new colours are likely additive or partial rewiring with junction boxes.
-
+Given the house's age, some of the electrical work may no longer meet current standards. The consumer unit is a non-RCD board made of plastic, so it does not comply with 18th edition standards. Visually, the wiring at the board appears original, with some newer colors likely indicating partial rewiring or additions made through junction boxes.
 
 ![](/assets/fuse-board.jpeg)
 
-A quick look in a light switch at random shows some pre-2006 wiring colours and also a metal back box, strangely
-despite the earth being adjacent, it's not been terminated into the box or fitting.
+A random inspection behind a light switch revealed pre-2006 wiring colors and a metal back box. Oddly, while the earth wire is present nearby, it hasn’t been terminated into the box or the fitting.
 
 ![](/assets/wiring-inspection-switch.jpeg)
 
@@ -41,12 +36,12 @@ despite the earth being adjacent, it's not been terminated into the box or fitti
 
 Roughly speaking the things high on my list to sort;
 
-- The Consumer unit changed
-- Rewire the upstairs lighting
-- Insulate the suspended floors
-- Insulate the loft
-- Add Ethernet where sensible
-- Replace front & back doors with modern composite
-- New Kitchen
-- New Ensuite/Bathroom
-- Add Solar Panels & Battery Storage
+- Update the consumer unit
+- Rewire upstairs lighting
+- Insulate suspended floors
+- Add more loft insulation
+- Install Ethernet in key areas
+- Replace the front and back doors with modern composite alternatives
+- Remodel the kitchen
+- Renovate the ensuite and main bathroom
+- Add solar panels and battery storage for energy efficiency
