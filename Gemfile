@@ -7,6 +7,7 @@ gem "jekyll-theme-chirpy", "~> 5.2", ">= 5.2.1"
 gem "jekyll-remote-theme"
 gem "jekyll-paginate"
 gem 'jekyll-archives'
+gem 'jekyll-include-cache'
 
 group :test do
   gem "html-proofer", "~> 3.18"
