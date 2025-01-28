@@ -1,8 +1,13 @@
 ---
-# the default layout is 'page'
+title: About
 icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+Hej,
+
+I'm Gavin, a software engineer with an interest in renewable technologies, DIY and Alaskan Malamutes
+
+Im working with large scale applications with an interest in performance, scalability & devops.
+
+![](/assets/about-dog.jpeg)
