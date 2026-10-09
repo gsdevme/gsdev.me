@@ -1,11 +1,15 @@
 ---
 title: Intro to House Renovation
-date: 2022-03-21 13:00:00 +/-0100
+date: 2022-03-21 13:00:00 +0000
 categories: [DIY, House Renovation]
-tags: [diy, house, renovation]     # TAG names should always be lowercase
+tags: [diy, house, renovation]
+description: >-
+  Moving into a 1979 house in Ayrshire, what I know about it so far, and the electrical,
+  insulation and renovation work planned.
+ai_assisted: false
 ---
 
-# Intro
+## Intro
 
 Today marks the day I moved from a new-build property into a 1979 house in sunny Ayrshire. This four-bedroom property has been maintained but is due for an update to reflect modern decor trends and improved thermal properties.
 
@@ -22,17 +26,17 @@ Here’s a quick overview of what I know about the house so far:
 - Windows: All uPVC, likely from the extension era and showing their age
 - Back door: Wooden
 
-## Electrical Overview
+### Electrical Overview
 
 Given the house's age, some of the electrical work may no longer meet current standards. The consumer unit is a non-RCD board made of plastic, so it does not comply with 18th edition standards. Visually, the wiring at the board appears original, with some newer colors likely indicating partial rewiring or additions made through junction boxes.
 
-![](/assets/fuse-board.jpeg)
+![1990s plastic consumer unit with original wiring](/assets/fuse-board.jpeg)
 
 A random inspection behind a light switch revealed pre-2006 wiring colors and a metal back box. Oddly, while the earth wire is present nearby, it hasn’t been terminated into the box or the fitting.
 
-![](/assets/wiring-inspection-switch.jpeg)
+![Pre-2006 wiring colours behind a light switch, earth not terminated](/assets/wiring-inspection-switch.jpeg)
 
-# Plans
+## Plans
 
 Roughly speaking the things high on my list to sort;
 
