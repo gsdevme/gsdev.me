@@ -1,0 +1,19 @@
+{% if page.url == '/about/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": {{ page.url | absolute_url | jsonify }},
+  "mainEntity": {
+    "@type": "Person",
+    "@id": {{ '/about/#person' | absolute_url | jsonify }},
+    "name": {{ site.social.name | jsonify }},
+    "jobTitle": "Senior Software Engineer",
+    "url": {{ '/' | absolute_url | jsonify }},
+    "image": {{ site.avatar | absolute_url | jsonify }},
+    "sameAs": {{ site.social.links | jsonify }},
+    "knowsAbout": ["Go", "PHP", "AWS", "Kubernetes", "Terraform", "Agentic LLM engineering"]
+  }
+}
+</script>
+{% endif %}
