@@ -1,9 +1,27 @@
-version: '2.4'
-
 services:
   jekyll:
-    image: jekyll/jekyll
+    # Official Ruby image matching .ruby-version and the CI Ruby version.
+    image: ruby:3.4
+    # The repo is mounted here; all commands run from the repo root.
+    working_dir: /srv/jekyll
+    # Rootless Podman: map the host user to the same UID inside the
+    # container so it can write to the bind mount and _site, vendor and
+    # Gemfile.lock stay owned by you rather than a subordinate UID.
+    userns_mode: keep-id
+    # Run as the host user. UID/GID are exported by the Makefile; 1000 is
+    # the fallback when compose is invoked directly.
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      # The host UID has no home directory in the image; give gem/bundler
+      # and git somewhere writable for their config and caches.
+      HOME: /tmp
+      # Install gems inside the repo (gitignored) so they persist between runs.
+      BUNDLE_PATH: /srv/jekyll/vendor/bundle
     volumes:
-      - './:/srv/jekyll:cached'
+      - ./:/srv/jekyll
     ports:
-      - '80:4000'
+      # Jekyll dev server.
+      - "4000:4000"
+      # LiveReload websocket used by `jekyll serve -l`.
+      - "35729:35729"
+    command: bash -c "bundle install && bash tools/run.sh -H 0.0.0.0"
