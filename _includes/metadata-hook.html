@@ -1,4 +1,9 @@
-{% if page.url == '/about/' %}
+{% comment %}
+  ProfilePage structured data for any page that sets `profile: true` in its
+  front matter. `job_title` and `knows_about` are read from the same front
+  matter so the data lives with the page it describes.
+{% endcomment %}
+{% if page.profile %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -6,13 +11,13 @@
   "url": {{ page.url | absolute_url | jsonify }},
   "mainEntity": {
     "@type": "Person",
-    "@id": {{ '/about/#person' | absolute_url | jsonify }},
+    "@id": {{ page.url | append: '#person' | absolute_url | jsonify }},
     "name": {{ site.social.name | jsonify }},
-    "jobTitle": "Senior Software Engineer",
+    "jobTitle": {{ page.job_title | jsonify }},
     "url": {{ '/' | absolute_url | jsonify }},
     "image": {{ site.avatar | absolute_url | jsonify }},
     "sameAs": {{ site.social.links | jsonify }},
-    "knowsAbout": ["Go", "PHP", "AWS", "Kubernetes", "Terraform", "Agentic LLM engineering"]
+    "knowsAbout": {{ page.knows_about | jsonify }}
   }
 }
 </script>

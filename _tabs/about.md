@@ -5,6 +5,9 @@ order: 4
 description: >-
   Gavin Staniforth, a senior software engineer working in Go, PHP, AWS, Kubernetes
   and Terraform, and writing about agentic LLM engineering with Claude and Codex.
+profile: true
+job_title: Senior Software Engineer
+knows_about: [Go, PHP, AWS, Kubernetes, Terraform, Agentic LLM engineering]
 ---
 
 Hej, I'm Gavin.

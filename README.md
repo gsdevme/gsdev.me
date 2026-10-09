@@ -7,7 +7,9 @@ layouts, includes and styles live in the gem rather than this repository. See th
 
 ## Local development
 
-Everything runs inside a `ruby:3.4` container via Podman or Docker compose, so no local Ruby is needed.
+Everything runs inside a `ruby:3.4` container via rootless Podman's `docker compose` shim, so no local
+Ruby is needed. The compose file sets `userns_mode: keep-id`, which plain Docker rejects; remove that
+line from `infrastructure/docker-compose.yaml` to use Docker instead.
 
 ```bash
 make          # serve on http://localhost:4000 with live reload
