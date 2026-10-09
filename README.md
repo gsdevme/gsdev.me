@@ -1,43 +1,35 @@
-# Chirpy Starter
+# gsdev.me
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+Personal blog for [gsdev.me](https://www.gsdev.me), built with [Jekyll](https://jekyllrb.com/) and the
+[Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme. The theme is pulled in as a gem, so
+layouts, includes and styles live in the gem rather than this repository. See the
+[Chirpy docs](https://chirpy.cotes.page/) for theme configuration.
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+## Local development
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+Everything runs inside a `ruby:3.4` container via Podman or Docker compose, so no local Ruby is needed.
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
-
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+```bash
+make          # serve on http://localhost:4000 with live reload
+make test     # production build plus html-proofer (the same check CI runs)
+make shell    # open a shell in the container
+make clean    # stop containers and remove build and bundle caches
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+## Deployment
 
-## Usage
+`.github/workflows/pages-deploy.yml` builds and deploys to GitHub Pages on every push to `main`.
+html-proofer gates the deploy, so run `make test` before pushing.
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+## Writing posts
 
-## Contributing
+Posts live in `_posts/YYYY-MM-DD-slug.md`. Front matter keys: `title`, `date` (with timezone offset),
+`categories`, `tags`, `description` and optionally `image`. Tags must be lowercase. Images go in
+`assets/` and are referenced as `/assets/<name>`.
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+Every post gets an AI-assistance note appended by `_plugins/ai-notice.rb`. Opt a post out with
+`ai_assisted: false` in its front matter.
 
 ## License
 
-This work is published under [MIT][mit] License.
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+This work is published under the [MIT](LICENSE) License.
