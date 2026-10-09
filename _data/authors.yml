@@ -1,0 +1,7 @@
+# Post authors, referenced by the `author` front-matter key (defaulted to
+# `gavin` for all posts in _config.yml). Chirpy renders `name` in the post
+# byline and links it to `url`; jekyll-seo-tag uses it for structured data.
+gavin:
+  name: Gavin Staniforth
+  twitter: gsdev90
+  url: https://www.gsdev.me/about/
