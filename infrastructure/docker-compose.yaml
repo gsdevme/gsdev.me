@@ -7,6 +7,8 @@ services:
     # Rootless Podman: map the host user to the same UID inside the
     # container so it can write to the bind mount and _site, vendor and
     # Gemfile.lock stay owned by you rather than a subordinate UID.
+    # keep-id is Podman-specific; plain Docker rejects it, so delete this
+    # line (the `user:` mapping below is enough) to run under Docker.
     userns_mode: keep-id
     # Run as the host user. UID/GID are exported by the Makefile; 1000 is
     # the fallback when compose is invoked directly.
@@ -17,6 +19,9 @@ services:
       HOME: /tmp
       # Install gems inside the repo (gitignored) so they persist between runs.
       BUNDLE_PATH: /srv/jekyll/vendor/bundle
+      # inotify events do not reliably cross the bind mount (never on Docker
+      # Desktop VMs), so tools/run.sh polls for changes when this is set.
+      JEKYLL_FORCE_POLLING: "1"
     volumes:
       - ./:/srv/jekyll
     ports:
