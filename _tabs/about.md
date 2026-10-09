@@ -29,7 +29,7 @@ The common thread is operability: observability, CI/CD, cost, and making systems
 
 ## Agentic engineering
 
-For the last while a big part of my work has been engineering with LLM agents, mainly [Claude Code](https://claude.com/claude-code) and [OpenAI Codex](https://openai.com/codex/). That means more than prompting a chatbot: it's planning work for agents, giving them the right context and guardrails, running several in parallel, reviewing what they produce, and building the workflows and tooling that make all of that repeatable. I'm interested in where agents genuinely change how software gets built, and equally in where they don't. Expect posts on both.
+For the last while a big part of my work has been engineering with LLM agents, mainly [Claude Code](https://claude.com/claude-code) and [OpenAI Codex](https://openai.com/codex/). That means more than prompting a chatbot: it's planning work for agents, giving them the right context and guardrails, running several in parallel, reviewing what they produce, and building the workflows and tooling that make all of that repeatable. I'm interested in where agents genuinely change how software gets built, and equally in where they don't. Expect posts on both. The portable preferences I give Claude Code and Codex live in [agent-dotfiles](https://github.com/gsdevme/agent-dotfiles), a small repo that renders one set of topic files into both agents' configuration.
 
 ## How I use AI
 
