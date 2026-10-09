@@ -12,7 +12,7 @@ In [the batteries post](/posts/batteries-arrive/) I said I'd look into night tar
 
 ## Three years of a hobby hack
 
-Until late August 2022 we sat on the price-capped standard tariff. Then Octopus Tracker through the winter, and from January 2023 Octopus Go, with a cheap overnight window that makes charging the battery from the grid worth doing. Export started in April 2023, when I switched to Octopus Flux for the summer. Flux paid well in the sunny months, but for winter Go's overnight rate wins, so it has been Go, a second summer of Flux, and from May 2024 Intelligent Octopus Go. Export has been paid continuously since that first Flux switch, at somewhere between 8p and 15p a unit depending on the year.
+Until late August 2022 we sat on the price-capped standard tariff. We moved to Octopus Tracker for the winter, and from January 2023 to Octopus Go, with a cheap overnight window that makes charging the battery from the grid worth doing. Paid export started in April 2023, when I switched to Octopus Flux for the summer; before that, what went out to the grid earned nothing. Flux paid well in the sunny months, but for winter Go's overnight rate wins, so it has been Go, a second summer of Flux, and from May 2024 Intelligent Octopus Go. Export has been paid continuously since that first Flux switch, at somewhere between 8p and roughly 25p a unit depending on the tariff.
 
 A night tariff only pays if the battery fills up at night, and I wanted that in Home Assistant, which I was already running.
 
@@ -24,7 +24,7 @@ Control was one MQTT topic. A Home Assistant automation published a number of am
 
 ![Inverter entities in Home Assistant showing the overnight grid-charge window](/assets/solis-manager-2023-ha-entities.png)
 
-It was a hobby hack: get enough working, then stop. I stopped in May 2023 and didn't touch it for three years. Coming back to it in 2026, the list was the usual one. A committed `.env` with real secrets in it. No availability, so when it died, Home Assistant carried on showing the last numbers as though nothing had happened. Controls that were raw MQTT topics wired up by hand-written automations. And, it turned out, a grid import figure and a grid export figure that were really the two halves of one 32-bit number.
+It was a hobby hack: get enough working, then stop. I stopped in May 2023 and didn't touch it for three years. Coming back to it in 2026, the list was the usual one. A committed `.env`, placeholder values or not. No availability, so when it died, Home Assistant carried on showing the last numbers as though nothing had happened. Controls that were raw MQTT topics wired up by hand-written automations. And, it turned out, a grid import figure and a grid export figure that were really the two halves of one 32-bit number.
 
 ## The rebuild
 

@@ -2,13 +2,13 @@
 title: "The battery that falls off a cliff, part 2: one weak cell per module"
 date: 2026-10-09 10:30:00 +0100
 categories: [Renewables, Batteries]
-tags: [dyness, battery, can-bus, python, claude, solis]
+tags: [dyness, battery, can-bus, python, claude, solis, home-assistant]
 description: >-
   An overnight CAN log of my Dyness B3 stack traced the sudden SOC drops to one weak cell in
   each of two modules, and the evidence is now with Dyness UK.
 ---
 
-In [part 1](/posts/dyness-battery-fault-part-1/) a home-made USB-CAN cable got me per-cell data from the three Dyness B3 modules, and the first reading on 8 Oct showed the modules disagreeing about their own charge by about 29 points at the same cell voltage. The obvious next step was to watch a whole charge, cell by cell.
+In [part 1](/posts/dyness-battery-fault-part-1/) a home-made USB-CAN cable got me per-cell data from the three Dyness B3 modules, and the first reading on 8 October showed the modules disagreeing about their own charge by about 29 points at the same cell voltage. The obvious next step was to watch a whole charge, cell by cell.
 
 ## Overnight
 
@@ -41,17 +41,17 @@ while True:
 
 The cell frames kept streaming all night without a single poll.
 
-The charge ran from 23:29 to 01:41 at about 63 A, with the modules starting at 42 %, 13 % and 12 %. Module 1 behaved: its cells rose together, its SOC (state of charge) climbed steadily, and it reached 100 % at 01:41.
+The charge ran from 23:29 to 01:41, starting at about 63 A, with the modules starting at 42 %, 13 % and 12 %. Module 1 mostly behaved: its cells rose together for most of the charge, its SOC (state of charge) climbed steadily, and it reached 100 % at 01:41, though right at the end its cell 7 spiked to 3.517 V, 101 mV above the lowest.
 
-Modules 2 and 3 didn't. In each, one cell pulled away from the rest: cell 8 in module 2, cell 9 in module 3. A module's BMS (battery management system) only corrects its SOC at the top when a cell reaches 3.50 V. At 00:59 module 2's cell 8 got there with the module at about 55 % (the chart's own labels say 53 %), and its SOC jumped to 100 % in 80 seconds. Module 3's cell 9 did the same at 01:11–01:13, at about 56–58 %. Between 01:31 and 01:41 both weak cells reached 3.55 V and tripped cell over-voltage protection while their neighbours sat at about 3.40 V.
+Modules 2 and 3 didn't. In each, one cell pulled away from the rest: cell 8 in module 2, cell 9 in module 3. A module's BMS (battery management system) only corrects its SOC at the top when a cell reaches 3.50 V. At 00:59 module 2's cell 8 got there with the module at 53 %, and its SOC jumped to 100 % in 80 seconds. Module 3's cell 9 did the same at 01:11–01:13, and its SOC jumped from somewhere in the high 50s to 60s (the snapshots show 55 % at 01:00 and 69 % at 01:12) straight to 100 %. Between 01:31 and 01:41 both weak cells reached 3.55 V and tripped cell over-voltage protection while their neighbours sat at about 3.40 V.
 
-![Highest, average and lowest cell voltage plus BMS SOC per module during the overnight charge: in modules 2 and 3 one cell climbs far above the rest, crosses the 3.50 V line at about 55 % SOC, the SOC jumps to 100 %, and cell 8 of module 2 and cell 9 of module 3 hit the 3.55 V over-voltage cut](/assets/dyness-charge-cells.png)
+![Highest, average and lowest cell voltage plus BMS SOC per module during the overnight charge: in modules 2 and 3 one cell climbs far above the rest, crosses the 3.50 V line well before the module is full, the SOC jumps to 100 %, and cell 8 of module 2 and cell 9 of module 3 hit the 3.55 V over-voltage cut](/assets/dyness-charge-cells.png)
 
 The charge counted into each module tells the rest: 42 Ah, 33 Ah and 34 Ah. Module 1 took the most despite reading 30 points fuller, so modules 2 and 3 were never near empty. The stack took about 5.6 kWh from a reported 22 %, so it was really about 48 % full.
 
 ## And on the way down
 
-The same cell causes the evening drop. At the bottom, a module re-zeroes its SOC when a cell sags to 2.95 V. Working back from the module readings, on 8 Oct modules 2 and 3 each still had about 34 % counted when their weak cell hit that floor, and both snapped to 0 %. Module 1's cells didn't get there, so it stayed at about 28 %.
+The same cell causes the evening drop. At the bottom, a module re-zeroes its SOC when a cell sags to 2.95 V. Working back from the module readings, on 8 October modules 2 and 3 each still had about 34 % counted when their weak cell hit that floor, and both snapped to 0 %. Module 1's cells didn't get there, so it stayed at about 28 %.
 
 As part 1 showed, the inverter only gets the average of the three module SOCs, in frame `0x355`. Two modules going from 34 % to 0 % together turned 32 % into 9 % in one step, at only about 470 W. The size of the drop depends on which modules reset, which is why it looked as though it was getting worse.
 
@@ -84,18 +84,18 @@ html[data-mode="dark"] .dy-root{--dy-ok:#4cc28a;--dy-bad:#f0776b;--dy-rule:rgba(
 @media (max-width:620px){.dy-modules{grid-template-columns:1fr}.dy-illus{padding:12px}.dy-boxes{gap:6px}.dy-mbox{padding:6px}.dy-bars{gap:1px}}
 </style>
 <div class="dy-root">
-<div class="dy-illus" role="img" aria-label="How one cell empties a whole module. In the evening all three modules report about 30 %, but the weak cell in modules 2 and 3 is already much lower than its neighbours. When that weak cell runs out, modules 2 and 3 report 0 % while module 1 still reports 25 %, even though every module still holds energy.">
+<div class="dy-illus" role="img" aria-label="How one cell empties a whole module. In the evening all three modules report about 30 %, but the weak cell in modules 2 and 3 is already much lower than its neighbours. When that weak cell runs out, modules 2 and 3 report 0 % while module 1 still reports 28 %, even though every module still holds energy.">
 <p class="dy-step">Evening: every module thinks it has about 30 % left.</p>
 <div class="dy-boxes"><div class="dy-mbox"><strong>Module 1</strong><span class="dy-says">30 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span></div></div><div class="dy-mbox"><strong>Module 2</strong><span class="dy-says">30 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span class="dy-w" style="--lv:0.12"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span></div></div><div class="dy-mbox"><strong>Module 3</strong><span class="dy-says">30 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span class="dy-w" style="--lv:0.14"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span><span style="--lv:0.3"></span></div></div></div>
 <p class="dy-step">The weak cell runs out first, so its module reports 0 %.</p>
-<div class="dy-boxes"><div class="dy-mbox"><strong>Module 1</strong><span class="dy-says">25 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span></div></div><div class="dy-mbox dy-bad"><strong>Module 2</strong><span class="dy-says">0 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span class="dy-w" style="--lv:0"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span></div></div><div class="dy-mbox dy-bad"><strong>Module 3</strong><span class="dy-says">0 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span class="dy-w" style="--lv:0"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span></div></div></div>
+<div class="dy-boxes"><div class="dy-mbox"><strong>Module 1</strong><span class="dy-says">28 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span><span style="--lv:0.28"></span></div></div><div class="dy-mbox dy-bad"><strong>Module 2</strong><span class="dy-says">0 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span class="dy-w" style="--lv:0"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span></div></div><div class="dy-mbox dy-bad"><strong>Module 3</strong><span class="dy-says">0 %</span><div class="dy-bars" aria-hidden="true"><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span class="dy-w" style="--lv:0"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span><span style="--lv:0.25"></span></div></div></div>
 <p class="dy-note">The inverter sees the average of the three, so two modules hitting 0 % together drops the app from about 30 % to about 9 %, while every module still holds energy. The same happens at the top: the weak cell fills first and its module jumps to 100 %.</p>
 </div>
 </div>
 
 ![Colour-coded table of module snapshots from 8 October 21:01 to 9 October 03:30: SOC, current, lowest, average and highest cell and spread per module, with module 2 cell 8 and module 3 cell 9 lowest at rest and highest on charge](/assets/dyness-module-snapshots.png)
 
-I also ran two step tests at about 62 A: a charge from near empty on 8 Oct and a discharge from a synced 100 % on 9 Oct. Each cell's voltage change 20–40 seconds in gives an apparent resistance. It includes polarisation, so it's for comparison only.
+I also ran two step tests at about 62 A: a charge from near empty on 8 October and a discharge from a synced 100 % on 9 October. Each cell's voltage change 20–40 seconds in gives an apparent resistance. It includes polarisation, so it's for comparison only.
 
 | Cell | Charge step (mΩ, vs module median) | Discharge step (mΩ, vs module median) |
 | --- | --- | --- |
@@ -105,7 +105,7 @@ I also ran two step tests at about 62 A: a charge from near empty on 8 Oct and a
 
 The weak cells are high in both directions and at both ends of the charge, and recovered to their usual offset within five minutes of the discharge step. Cell 6 read high in every module, both times, which points at the busbar or sense lead in the measurement path rather than a cell.
 
-The cost is energy. From the BMS reporting 100 % to the drop, the stack gave 6.67 kWh on 5 Oct and 6.95 kWh on 8 Oct, against about 8.6 kWh for 80 % of 10.8 kWh. Modules 2 and 3 work over roughly 55–65 % of their rated 75 Ah each cycle.
+The cost is energy. From the BMS reporting 100 % to the drop, the stack gave 6.67 kWh on 5 October and 6.95 kWh on 8 October, against about 8.6 kWh for 80 % of 10.8 kWh. Modules 2 and 3 work over roughly 55–65 % of their rated 75 Ah each cycle.
 
 ## What the BMS can't tell you
 
@@ -113,7 +113,7 @@ Put side by side, the three modules look like this:
 
 <div class="dy-root">
 <div class="dy-modules">
-<div class="dy-mod dy-ok"><span class="dy-tag">Healthy</span><span class="dy-name">Module 1</span><dl><dt>Worst cell resistance</dt><dd>+35 %</dd><dt>Charge taken overnight</dt><dd>42 Ah</dd><dt>BMS health (SOH)</dt><dd>97 %</dd></dl></div>
+<div class="dy-mod dy-ok"><span class="dy-tag">Healthiest</span><span class="dy-name">Module 1</span><dl><dt>Worst cell resistance</dt><dd>+35 %</dd><dt>Charge taken overnight</dt><dd>42 Ah</dd><dt>BMS health (SOH)</dt><dd>97 %</dd></dl></div>
 <div class="dy-mod dy-bad"><span class="dy-tag">Weak cell 8</span><span class="dy-name">Module 2</span><dl><dt>Cell 8 resistance</dt><dd>+66 % / +102 %</dd><dt>Charge taken overnight</dt><dd>33 Ah</dd><dt>BMS health (SOH)</dt><dd>97 %</dd></dl></div>
 <div class="dy-mod dy-bad"><span class="dy-tag">Weak cell 9</span><span class="dy-name">Module 3</span><dl><dt>Cell 9 resistance</dt><dd>+44 % / +57 %</dd><dt>Charge taken overnight</dt><dd>34 Ah</dd><dt>BMS health (SOH)</dt><dd>97 %</dd></dl></div>
 </div>
@@ -122,26 +122,26 @@ Put side by side, the three modules look like this:
 
 The BMS reports 97 % SOH (state of health) for all three modules. By its own account nothing is wrong.
 
-Nor will it fix itself. Balancing only starts when cells are above 3.30 V and at least 30 mV apart, and on the flat middle of an LFP (lithium iron phosphate) curve that gap rarely shows up. Worse, during a charge module 2 balances by bleeding its highest cell, which is now the weak cell 8, leaving it lower still at the bottom of the next discharge. The charge-current limit is a lookup on estimated SOC, not on cell voltage: 37.5 A per module (a third of the stack figures in part 1), 30 A from 81 %, 15 A from 91 %, 0 A at 100 %. Once a module has decided it is full, nothing on the inverter side can push more in.
+Nor will it fix itself. Balancing only starts when cells are above 3.30 V and at least 30 mV apart, and on the flat middle of an LFP (lithium iron phosphate) curve that gap rarely shows up. Worse, during a charge module 2 balances by bleeding its highest cell, which is now the weak cell 8, leaving it lower still at the bottom of the next discharge. The charge-current limit is a lookup on estimated SOC, not on cell voltage: 37.5 A per module (a third of the stack figures in part 1), 30 A from 81 %, 15 A from 91 %, 0 A at 100 %. Once a module has decided it is full, the stack's charge limit drops and nothing on the inverter side can push the charge on properly. Module 2 still took a trickle of 5–9 A for the 40 minutes after it read 100 %, and all that did was push its weak cell 8 up to 3.55 V.
 
 That is why none of the earlier fixes from part 1 could work. User-Define mode with 54 V equalise still stopped when the BMS said 100 %, charge currents from 25 to 64 A ended at the same point, and holding at 100 % for hours just sat at 0 A. The problem isn't where the charge stops; it's one cell in each of two modules.
 
 > If you have a Dyness stack doing this: listen on the spare link port at the end of the chain rather than unplugging anything, and read every cell before believing the percentage. Don't write BMS parameters. The same bus carries the parameter-write frames, and changing them without Dyness involved risks the battery and the warranty.
 {: .prompt-tip }
 
-Claude's part in this half was the analysis: Claude Code wrote the scripts, the charts above and the findings write-up from the overnight capture. It also got things wrong that the data corrected. In the claude.ai chat it said balancing needed about 3.4 V; the parameter values say 3.30 V with a 30 mV gap. After the video of the alarm lights it suspected a loose power connection, which the even current split ruled out. And its summary after the 8 Oct reading blamed SOC counters drifting while the cells were broadly healthy. The overnight charge overturned that: the stack resyncs to 100 % every night, so drift between charges can't be the cause.
+Claude's part in this half was the analysis: Claude Code wrote the scripts, the charts above and the findings write-up from the overnight capture. It also got things wrong that the data corrected. In the claude.ai chat it said balancing needed about 3.4 V; the parameter values say 3.30 V with a 30 mV gap. After the video of the alarm lights it suspected a loose power connection, which the even current split ruled out. And its summary after the 8 October reading blamed SOC counters drifting while the cells were broadly healthy. The overnight charge overturned that: the stack resyncs to 100 % every night, so drift between charges can't be the cause.
 
 ## Over to Dyness
 
-On 9 Oct I sent Dyness UK the evidence above and asked for a warranty assessment of modules 2 and 3. This isn't a job for a screwdriver and a multimeter on my side.
+On 9 October I sent Dyness UK the evidence above and asked for a warranty assessment of modules 2 and 3. This isn't a job for a screwdriver and a multimeter on my side.
 
 A few things are still open on my side:
 
-- **Which box is which.** Module numbers are CAN addresses. The red ALM (alarm) LEDs on 8 Oct were on the middle and bottom boxes, which fits, but I still need to match each DIP address and serial number to a physical box.
+- **Which box is which.** Module numbers are CAN addresses. The red ALM (alarm) LEDs on 8 October were on the middle and bottom boxes, which fits, but I still need to match each DIP address and serial number to a physical box.
 - **Firmware.** Each module's BMS firmware version isn't in the CAN frames, but Dyness can read them, and [modules in a stack should run the same version](https://solar-tech-support.co.uk/fault-codes/dyness/).
 - **Capacity.** A slow discharge from a synced 100 % should show whether the weak cells have also lost capacity, or only gained resistance.
 
-Against the explanations I started with: one weak cell per module and the modules disagreeing about SOC are confirmed, the high resistance is confirmed, whether those cells have also lost capacity is still open, and a bad power connection is unlikely. No reply from Dyness yet.
+Against the three explanations I started with in part 1: a weak cell is confirmed, one each in modules 2 and 3, with high resistance. SOC drift is out, because the stack resyncs to 100 % every night. And the stack does reach 100 %, it just gets there early, because the weak cell trips the reset before the rest are full. Whether those cells have also lost capacity is still open, and a bad power connection was ruled out by the even current split. No reply from Dyness yet.
 
 ## What's next
 

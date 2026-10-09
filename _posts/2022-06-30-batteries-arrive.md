@@ -12,7 +12,7 @@ This picks up where [the install post](/posts/solar-install/) left off: panels o
 
 ## The wait
 
-The system ran panels-only for about two months. Whatever the roof generated went straight into the house. The evenings still ran on the grid.
+The system ran panels-only for about two months. Whatever the roof generated went into the house, and what the house didn't use went to the grid for nothing. The evenings still ran on the grid.
 
 There isn't much to say about the wait itself. I didn't chase anyone. Once the Dyness stock arrived, Solar Services Scotland got in touch and came back to fit them.
 
@@ -45,7 +45,7 @@ Before the batteries, the Solarman app was already logging generation. The month
 | May 2022 | 638 kWh | First full month |
 | June 2022 | 704 kWh | Best month yet |
 
-Grid import has been tiny on sunny days, even without storage. It has stayed at no more than a few tens of kWh a month.
+Even without storage, daytime grid import fell to almost nothing on sunny days. Evenings and nights still came from the grid.
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="100%" role="img" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" style="max-width: 640px; display: block; margin: 1rem auto;">
   <title>Solar generation, 2022 (kWh)</title>

@@ -132,12 +132,12 @@ Then, at about 21:00, with the grid charge running at about 13 A, the first live
 | | Module 1 | Module 2 | Module 3 |
 | --- | --- | --- | --- |
 | Module SOC (%) | 38 | 9 | 9 |
-| Average cell (mV) | 3318 | 3310 | 3320 |
+| Average cell (mV) | 3319 | 3310 | 3319 |
 | Charge current (A) | 4.9 | 4.2 | 4.0 |
 | Max discharge allowed (A) | 37.5 | 0 | 0 |
 | Cycles | 1035 | 998 | 972 |
 
-The three module averages were within 10 mV of each other, at about 3.31 V a cell. The current was shared roughly evenly, which rules out a bad power connection on one module. Yet the three modules disagree about how full they are by nearly 30 points, and two of them refuse to discharge at all until they think they're back above 16 %.
+The three module averages were within 10 mV of each other, at about 3.32 V a cell. The current was shared roughly evenly, which rules out a bad power connection on one module. Yet the three modules disagree about how full they are by nearly 30 points, and two of them refuse to discharge at all until they think they're back above 16 %.
 
 The inverter never sees any of that. The SOC it gets is frame `0x355`, which is the average of the three module estimates: 18 % at that moment. So when two modules decide at once that they are empty, the average falls off a cliff, and the whole stack's discharge limit drops to module 1's 37.5 A.
 
@@ -147,3 +147,5 @@ The inverter never sees any of that. The SOC it gets is frame `0x355`, which is 
 ## What's next
 
 Why modules 2 and 3 reset and module 1 doesn't is the open question. A listen-only logger is running against the stack tonight through the overnight charge, writing every frame to disk.
+
+What that overnight log showed is in [part 2](/posts/dyness-battery-fault-part-2/).
