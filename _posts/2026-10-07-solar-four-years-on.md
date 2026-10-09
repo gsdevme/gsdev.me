@@ -140,13 +140,13 @@ The low end of each total leaves the battery arbitrage out entirely, to stay on 
 
 So after four and a half years, the system has paid back somewhere between roughly £5,000 and £6,900 of the £10,000.
 
-For payback I've taken 2025 as a typical year, at 2026 prices. Without any arbitrage that is about £990 a year, and with the top of the arbitrage range about £1,580 a year. That puts payback at roughly 6½ to 10 years from install, somewhere between late 2028 and 2032. The range is wide almost entirely because of the battery. I know how much came out of it, but not how much of what went in was cheap overnight grid rather than solar. Half-hourly data would narrow that down. Monthly totals can't.
+For payback I've taken 2025 as a typical year, at 2026 prices. Without any arbitrage that is about £990 a year, and with the top of the arbitrage range about £1,580 a year. That puts payback at roughly 6½ to 9½ years from install, somewhere between late 2028 and late 2031. The range is wide almost entirely because of the battery. I know how much came out of it, but not how much of what went in was cheap overnight grid rather than solar. Half-hourly data would narrow that down. Monthly totals can't.
 
-If nothing changes, which it will, the picture looks like this. Taking the 2026 run rate forward, the cautious line (self-consumption and export only, about £990 a year) crosses the £10k mark during 2031. The optimistic line, which adds the upper bound for the battery's overnight arbitrage (about £1,580 a year), gets there during 2028. Real life will land somewhere between: rates will move, the panels will age a little, and the battery has been less than reliable lately.
+If nothing changes, which it will, the picture looks like this. Taking that 2025 rate forward, the cautious line (self-consumption and export only, about £990 a year) crosses the £10k mark in late 2031. The optimistic line, which adds the upper bound for the battery's overnight arbitrage (about £1,580 a year), gets there in late 2028. Real life will land somewhere between: rates will move, the panels will age a little, and the battery has been less than reliable lately.
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="100%" role="img" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" style="max-width: 640px; display: block; margin: 1rem auto;">
   <title>Cumulative savings against the £10k outlay</title>
-  <desc>Line chart of cumulative savings from 2022 to 2032. Two estimates: without battery arbitrage (low) and with its upper bound (high). Solid lines are actuals to 2026; dashed lines project the 2026 run rate. The high estimate crosses £10,000 during 2028 and the low estimate during 2031.</desc>
+  <desc>Line chart of cumulative savings from 2022 to 2032. Two estimates: without battery arbitrage (low) and with its upper bound (high). Solid lines are actuals to early October 2026; dashed lines project 2025 at 2026 prices. The high estimate crosses £10,000 in late 2028 and the low estimate in late 2031.</desc>
   <style>
     .sg-ink { fill: currentColor; }
     .sg-ink2 { fill: currentColor; opacity: 0.7; }
@@ -166,14 +166,14 @@ If nothing changes, which it will, the picture looks like this. Taking the 2026 
     }
   </style>
   <text class="sg-ink" x="16" y="28" font-size="16" font-weight="600">Cumulative savings against the £10k outlay</text>
-  <text class="sg-ink2" x="16" y="50" font-size="13">Solid: to date. Dashed: projected at the 2026 run rate, nothing else changing.</text>
+  <text class="sg-ink2" x="16" y="50" font-size="13">Solid: to date. Dashed: 2025 at 2026 prices, nothing else changing.</text>
   <g stroke-width="1" fill="none" shape-rendering="crispEdges">
     <line class="sg-grid" x1="56" x2="624" y1="233.8" y2="233.8"/>
     <line class="sg-grid" x1="56" x2="624" y1="157.2" y2="157.2"/>
     <line class="sg-grid" x1="56" x2="624" y1="80.5" y2="80.5"/>
     <line class="sg-ref" x1="56" x2="624" y1="118.8" y2="118.8" stroke-dasharray="2 3"/>
   </g>
-  <text class="sg-ink2" x="624" y="113.3" font-size="12" text-anchor="end">£10,000 outlay</text>
+  <text class="sg-ink2" x="62" y="113.3" font-size="12" text-anchor="start">£10,000 outlay</text>
   <g class="sg-ink2 sg-tick" font-size="12" text-anchor="end">
     <text x="48" y="314">£0</text>
     <text x="48" y="237.8">£4k</text>
@@ -181,10 +181,10 @@ If nothing changes, which it will, the picture looks like this. Taking the 2026 
     <text x="48" y="84.5">£12k</text>
   </g>
   <g fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-    <polyline class="sg-hi" points="56.0,296.4 112.8,259.6 169.6,232.4 226.4,202.3 283.2,172.0"/>
-    <polyline class="sg-hi" stroke-dasharray="5 4" points="283.2,172.0 340.0,141.7 396.8,111.4 453.6,81.2 510.4,50.9 567.2,20.6 624.0,-9.7"/>
-    <polyline class="sg-lo" points="56.0,296.4 112.8,269.2 169.6,250.8 226.4,231.0 283.2,212.1"/>
-    <polyline class="sg-lo" stroke-dasharray="5 4" points="283.2,212.1 340.0,193.1 396.8,174.1 453.6,155.1 510.4,136.2 567.2,117.2 624.0,98.2"/>
+    <polyline class="sg-hi" points="56.0,296.4 112.8,259.6 169.6,232.4 226.4,202.3 283.2,178.2"/>
+    <polyline class="sg-hi" stroke-dasharray="5 4" points="283.2,178.2 340.0,148.0 396.8,117.8 453.6,87.6"/>
+    <polyline class="sg-lo" points="56.0,296.4 112.8,269.2 169.6,250.8 226.4,231.0 283.2,214.8"/>
+    <polyline class="sg-lo" stroke-dasharray="5 4" points="283.2,214.8 340.0,195.8 396.8,176.9 453.6,158.0 510.4,139.0 567.2,120.1 624.0,101.2"/>
   </g>
   <g>
     <g><title>2022: £710 high estimate</title><circle class="sg-hi-dot" cx="56.0" cy="296.4" r="4"/></g>
@@ -195,23 +195,20 @@ If nothing changes, which it will, the picture looks like this. Taking the 2026 
     <g><title>2024: £3,090 low estimate</title><circle class="sg-lo-dot" cx="169.6" cy="250.8" r="4"/></g>
     <g><title>2025: £5,620 high estimate</title><circle class="sg-hi-dot" cx="226.4" cy="202.3" r="4"/></g>
     <g><title>2025: £4,120 low estimate</title><circle class="sg-lo-dot" cx="226.4" cy="231.0" r="4"/></g>
-    <g><title>2026: £7,200 high estimate</title><circle class="sg-hi-dot" cx="283.2" cy="172.0" r="4"/></g>
-    <g><title>2026: £5,110 low estimate</title><circle class="sg-lo-dot" cx="283.2" cy="212.1" r="4"/></g>
-    <g><title>2027: £8,780 high estimate (projected)</title><circle class="sg-hi-dot" cx="340.0" cy="141.7" r="4"/></g>
-    <g><title>2027: £6,100 low estimate (projected)</title><circle class="sg-lo-dot" cx="340.0" cy="193.1" r="4"/></g>
-    <g><title>2028: £10,360 high estimate (projected)</title><circle class="sg-hi-dot" cx="396.8" cy="111.4" r="4"/></g>
-    <g><title>2028: £7,090 low estimate (projected)</title><circle class="sg-lo-dot" cx="396.8" cy="174.1" r="4"/></g>
-    <g><title>2029: £11,940 high estimate (projected)</title><circle class="sg-hi-dot" cx="453.6" cy="81.2" r="4"/></g>
-    <g><title>2029: £8,080 low estimate (projected)</title><circle class="sg-lo-dot" cx="453.6" cy="155.1" r="4"/></g>
-    <g><title>2030: £13,520 high estimate (projected)</title><circle class="sg-hi-dot" cx="510.4" cy="50.9" r="4"/></g>
-    <g><title>2030: £9,070 low estimate (projected)</title><circle class="sg-lo-dot" cx="510.4" cy="136.2" r="4"/></g>
-    <g><title>2031: £15,100 high estimate (projected)</title><circle class="sg-hi-dot" cx="567.2" cy="20.6" r="4"/></g>
-    <g><title>2031: £10,060 low estimate (projected)</title><circle class="sg-lo-dot" cx="567.2" cy="117.2" r="4"/></g>
-    <g><title>2032: £16,680 high estimate (projected)</title><circle class="sg-hi-dot" cx="624.0" cy="-9.7" r="4"/></g>
-    <g><title>2032: £11,050 low estimate (projected)</title><circle class="sg-lo-dot" cx="624.0" cy="98.2" r="4"/></g>
+    <g><title>2026: £6,890 high estimate (to early October)</title><circle class="sg-hi-dot" cx="283.2" cy="178.2" r="4"/></g>
+    <g><title>2026: £4,980 low estimate (to early October)</title><circle class="sg-lo-dot" cx="283.2" cy="214.8" r="4"/></g>
+    <g><title>2027: £8,470 high estimate (projected)</title><circle class="sg-hi-dot" cx="340.0" cy="148.0" r="4"/></g>
+    <g><title>2027: £5,970 low estimate (projected)</title><circle class="sg-lo-dot" cx="340.0" cy="195.8" r="4"/></g>
+    <g><title>2028: £10,050 high estimate (projected)</title><circle class="sg-hi-dot" cx="396.8" cy="117.8" r="4"/></g>
+    <g><title>2028: £6,960 low estimate (projected)</title><circle class="sg-lo-dot" cx="396.8" cy="176.9" r="4"/></g>
+    <g><title>2029: £11,630 high estimate (projected)</title><circle class="sg-hi-dot" cx="453.6" cy="87.6" r="4"/></g>
+    <g><title>2029: £7,950 low estimate (projected)</title><circle class="sg-lo-dot" cx="453.6" cy="158.0" r="4"/></g>
+    <g><title>2030: £8,940 low estimate (projected)</title><circle class="sg-lo-dot" cx="510.4" cy="139.0" r="4"/></g>
+    <g><title>2031: £9,930 low estimate (projected)</title><circle class="sg-lo-dot" cx="567.2" cy="120.1" r="4"/></g>
+    <g><title>2032: £10,920 low estimate (projected)</title><circle class="sg-lo-dot" cx="624.0" cy="101.2" r="4"/></g>
   </g>
-  <text class="sg-ink" x="618.0" y="-17.7" font-size="12" text-anchor="end">High: paid back in 2028</text>
-  <text class="sg-ink" x="618.0" y="114.2" font-size="12" text-anchor="end">Low: paid back in 2031</text>
+  <text class="sg-ink" x="447.6" y="74.0" font-size="12" text-anchor="end">High: paid back in 2028</text>
+  <text class="sg-ink" x="618.0" y="96.0" font-size="12" text-anchor="end">Low: paid back in 2031</text>
   <line class="sg-base" x1="56" x2="624" y1="310.5" y2="310.5" stroke-width="1" shape-rendering="crispEdges"/>
   <g class="sg-ink2" font-size="12" text-anchor="middle">
     <text x="56.0" y="332">2022</text>
@@ -267,4 +264,4 @@ Nothing here is new; it's all come up earlier in the series.
 ## What's next
 
 - A full year on the Loyal Fixed tariff. At a 35.07p day rate, solar used in the house is worth more, which should pull both ends of the payback range in a little.
-- The battery has started dropping charge in sudden steps over the last month, which is the next post.
+- The battery has started dropping charge in sudden steps over the last month, which is where [the next post](/posts/dyness-battery-fault-part-1/) picks up.
